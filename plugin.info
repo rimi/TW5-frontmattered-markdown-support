@@ -1,0 +1,6 @@
+{
+	"title": "$:/plugins/rimir/yaml-frontmattered-markdown",
+	"name": "Basic YAML Frontmattered Markdown Support",
+	"description": "Deserializes and persists YAML-Frontmattered Markdown (supports field+list)",
+	"list": "readme"
+}
