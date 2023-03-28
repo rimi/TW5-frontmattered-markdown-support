@@ -33,6 +33,7 @@ exports.startup = function() {
 	$tw.utils.each($tw.wiki.filterTiddlers("[type[text/x-markdown]]"),function(item) {
 		const markdownTiddler = $tw.wiki.getTiddler(item);
 		const fields = $tw.utils.deepCopy(markdownTiddler.fields);
+		//fields["#wiki-rel-title"] = fields.title.substring(($tw.boot.wikiPath+"/tiddlers/").length);
 		// SEE https://regex101.com/r/60KP75/2 (DELETE: https://regex101.com/delete/mz5TYrHsDVmCPg1ZUcTJIDSv)
 		const match = markdownTiddler.fields.text.match(/^(-{3}(?:\r\n|\r|\n)(.*?)(?:\r\n|\r|\n)-{3}(?:\r\n|\r|\n)?)?(.*)/ms);
 		if(match && match[2]) {
@@ -101,7 +102,7 @@ exports.startup = function() {
 				}
 			}
 		}
-		fields["#yaml-frontmatter-fields"] = propertyNames.join(" ");
+		fields["$yaml-frontmatter-fields$"] = propertyNames.join(" ");
 		fields.type = "text/x-frontmattered-markdown";
 
 		return fields;

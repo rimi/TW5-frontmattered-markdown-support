@@ -26,11 +26,11 @@ Save a tiddler to a file described by the fileInfo:
 */
 exports.saveTiddlerToFile = function(tiddler,fileInfo,callback) {
 
-	if(fileInfo.type === "text/x-frontmattered-markdown" && tiddler.fields["#yaml-frontmatter-fields"]) {
+	if(fileInfo.type === "text/x-frontmattered-markdown" && tiddler.fields["$yaml-frontmatter-fields$"]) {
 		$tw.utils.createDirectory(path.dirname(fileInfo.filepath));
 
 		var typeInfo = $tw.config.contentTypeInfo[tiddler.fields.type || "text/plain"] || {encoding: "utf8"};
-		const fields4Frontmatter = $tw.utils.parseStringArray(tiddler.fields["#yaml-frontmatter-fields"], false);
+		const fields4Frontmatter = $tw.utils.parseStringArray(tiddler.fields["$yaml-frontmatter-fields$"], false);
 		const fieldValues = [];
 		for(const frontmatterField of fields4Frontmatter){
 			if(frontmatterField.endsWith("::list")){
